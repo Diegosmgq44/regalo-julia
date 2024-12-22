@@ -18,35 +18,9 @@ function startGame() {
   // Ocultar la pantalla de bienvenida y mostrar la pantalla de introducción
   document.getElementById("start-screen").classList.remove("active");
   document.getElementById("intro-screen").classList.add("active");
-  typeIntroText();
+
+  document.body.style.opacity = 1;
   playMusic("assets/navidad.mp3", 0, 1500);
-}
-
-
-function typeIntroText() {
-  const introText = document.getElementById('intro-text');
-  const story = `
-    Prepárate para un emocionante desafío de conocimiento y deducción. 
-    Responderás preguntas cuidadosamente seleccionadas, cada una de ellas 
-    revelando una letra que te llevará a la palabra secreta final.
-
-    Tu sabrás como debe utilizar las diferentes letras y de donde obtenerlas.
-    
-    Resuelve cada enigma, y al final... ¡la sorpresa está asegurada! 🎁
-    
-    ¿Estás lista para demostrar tu ingenio?`;
-
-    document.body.style.opacity = 1;
-    //Mostrar el texto de introducción letra por letra
-    let i = 0;
-    const interval = setInterval(() => {
-      introText.textContent += story[i];
-      i++;
-      if (i >= story.length) {
-        clearInterval(interval);
-      }
-    }, 30);    
-
 }
 
 
@@ -82,6 +56,19 @@ function submitAnswer() {
   } else {
     showFailMessage();  // Muestra el mensaje de fallo
   }
+}
+
+// Mostrar Mensaje de Fallo (cuando falla una respuesta)
+function showFailMessage() {
+  const failMessage = document.getElementById("fail-message");
+  failMessage.classList.add("active");
+  failMessage.style.display = "flex";
+
+  setTimeout(() => {
+    failMessage.classList.remove("active");
+    failMessage.style.display = "none";
+  }, 2000); // Desaparece después de 2 segundos
+  
 }
 
 // Mostrar Pantalla Final

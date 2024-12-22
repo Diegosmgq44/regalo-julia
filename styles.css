@@ -113,7 +113,27 @@ input:focus {
     }
 }
 
-  
+.screen {
+    display: none;
+    opacity: 0;
+    animation: fadeIn 2s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(-5px) scale(1.02);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
   #countdown-screen #countdown {
     font-size: 12em;
     font-weight: bold;
@@ -165,6 +185,7 @@ input:focus {
 .visible {
     opacity: 1;
     transform: scale(1);
+    transition: opacity 2s linear;
 }
 
 /* Partículas */
@@ -177,3 +198,56 @@ input:focus {
     z-index: 1; /* Las partículas están al fondo */
     pointer-events: none; /* Las partículas no interfieren con los clics */
 }
+
+.message-container {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0; /* Asegura que esté en la parte superior */
+    left: 50%;
+    transform: translateX(-50%); /* Centrado exacto horizontal */
+    width: 100%;
+    z-index: 1000;
+  }
+  
+/* Estilo general del mensaje */
+.message-fail {
+    display: none; /* Oculto por defecto */
+    background-color: #ff4c4c; /* Fondo rojo brillante */
+    margin-top: 100px;
+    color: white; /* Texto blanco */
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: translateY(-20px); /* Desplazado hacia arriba */
+    transition: opacity 0.5s, transform 0.5s; /* Transiciones suaves */
+  }
+  
+/* Animación y activación del mensaje */
+.message-fail.active {
+    display: block;
+    opacity: 1;
+    transform: scale(1) translateY(-10px); /* Efecto de rebote */
+    bottom: 40px;
+  }
+  
+  /* Efecto divertido con rebote */
+  .message-fail.active {
+    animation: bounce 0.5s ease-out;
+  }
+  
+  @keyframes bounce {
+    0% {
+      transform: scale(0.8) translateY(10px);
+    }
+    50% {
+      transform: scale(1.1) translateY(-10px);
+    }
+    100% {
+      transform: scale(1) translateY(0);
+    }
+  }
