@@ -96,37 +96,40 @@ function checkSecretWord() {
     playMusic("assets/duki.mp3", 10000, 1500);
     // Ocultamos la pantalla de la palabra secreta
     document.getElementById("final-screen").classList.remove("active");
+    // Mostramos la cuenta atrás
+    document.getElementById("countdown-screen").classList.add("active");
 
-    // Mostrar directamente las imágenes
-    const imagesContainer = document.createElement('div');
-    imagesContainer.classList.add('images-container');
-    imagesContainer.innerHTML = `
-      <h1 class="images-title">¡Correcto! Aquí llega tu regalo... 👀 </h1>
-        <div class="images">
-          <div class="image" id="image1">
-            <img class="entrada" src="assets/1.png" alt="Entrada 1">
-          </div>
-          <div class="image" id="image2">
-            <img class="entrada" src="assets/2.png" alt="Entrada 2">
-          </div>
-        </div>
-    `;
-    document.body.appendChild(imagesContainer);
+    let countdown = 10;
+    const countdownElement = document.getElementById("countdown");
 
-    // Asegurarnos de que las imágenes se añadan correctamente
-    const image1 = document.getElementById("image1");
-    const image2 = document.getElementById("image2");
+    // Función de cuenta atrás
+    const countdownInterval = setInterval(() => {
+      countdownElement.textContent = countdown;
+      countdown--;
 
-    setTimeout(() => {
-      image1.classList.add('show');
-      image2.classList.add('show');
-    }, 500); // Un poco de retraso para la animación
+      if (countdown < 0) {
+        clearInterval(countdownInterval);
+        // Ocultamos la cuenta atrás y mostramos el "duki-screen"
+        document.getElementById("countdown-screen").classList.remove("active");
+        document.getElementById("duki-screen").classList.add("active");
 
-    launchConfetti(); // Lanza el confeti como celebración
+        // Aseguramos que las imágenes se muestren con un pequeño retraso
+        const image1 = document.getElementById("image1");
+        const image2 = document.getElementById("image2");
+
+        setTimeout(() => {
+          image1.classList.remove('hidden');
+          image2.classList.remove('hidden');
+        }, 500); // Un retraso de 500ms para animación
+
+        launchConfetti(); // Lanza el confeti como celebración
+      }
+    }, 1000); // Cuenta regresiva cada 1 segundo
   } else {
     alert("Palabra incorrecta. Revisa tus respuestas.");
   }
 }
+
 
 function playMusic(value, fadeOutDuration = 1500, fadeInDuration = 1500) {
   // Detener la música actual con un fade out
