@@ -1,33 +1,24 @@
-html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
-}
-
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-    font-size: 34px;
+    font-family: 'Roboto', sans-serif;
     color: #ffffff;
-    background: linear-gradient(135deg, 
-    rgba(34, 139, 34, 0.7) 25%,   /* Verde oscuro con opacidad */
-    rgba(220, 20, 60, 0.7) 50%,  /* Rojo cereza con opacidad */
-    rgba(255, 223, 186, 0.7) 75% /* Dorado claro */
-    
-);
-color: white; /* Texto blanco */
-
+    background: url('assets/fondo.jpg') no-repeat center center/cover;
     overflow: hidden;
-    position: relative; 
+    /**
+    linear-gradient(135deg, 
+        rgba(34, 139, 34, 0.7) 25%,   /* Verde oscuro con opacidad */
+       /* rgba(220, 20, 60, 0.7) 50%,  /* Rojo cereza con opacidad */
+      /*  rgba(255, 223, 186, 0.7) 75% /* Dorado claro */
+    
+    /*);*/
+    
 }
 
-#start-screen {
-    text-align: center;
-    border-radius: 10px;
-    position: relative;
-    z-index: 1; 
+h1 {
+    font-size: 5em;
+}
+
+p {
+    font-size: 1.5em;
 }
 
 .screen {
@@ -41,6 +32,7 @@ color: white; /* Texto blanco */
 .screen.active {
     display: flex;
     flex-direction: column;
+    opacity: 1;
 }
 
 button {
@@ -49,32 +41,14 @@ button {
     padding: 10px 20px;
     border: none;
     border-radius: 10px;
-    font-size: 1.2em;
+    font-size: 2em;
     cursor: pointer;
     margin: 10px;
+    margin-top: 60px;
 }
 
 button:hover {
     background: rgba(0, 0, 0, 0.7);
-}
-
-input {
-    padding: 10px;
-    font-size: 1em;
-    border-radius: 5px;
-    border: 1px solid white;
-    margin: 10px;
-    text-align: center;
-}
-
-/* Fondo y partículas */
-#particles-js {
-    position: absolute; /* Asegura que las partículas estén en el fondo */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* Poner las partículas detrás del contenido */
 }
 
 input {
@@ -90,7 +64,6 @@ input {
     transition: all 0.3s ease;
 }
 
-/* Efecto de enfoque (cuando se hace clic en el input) */
 input:focus {
     border-color: rgb(158, 0, 0); /* Borde rojo oscuro */
     background-color: rgba(255, 255, 255, 0.9); /* Fondo más claro al hacer foco */
@@ -100,193 +73,72 @@ input:focus {
 
 .input-group {
     display: flex;
-    flex-direction: column; /* Coloca los elementos de forma vertical */
-    align-items: center; /* Centra los elementos en el contenedor */
+    flex-direction: column;
+    align-items: center;
     margin-top: 20px;
+    z-index: 10;
 }
+
 .images-container h2 {
     font-size: 30px;
     color: #ffffff;
     margin-bottom: 20px;
     text-align: center;
-
 }
 
 .images-container {
     text-align: center;
     margin-top: 50px;
-    z-index: 1; /* Bajo z-index para que no cubra otros elementos interactivos */
-
-    opacity: 1; /* Ya no se necesita animación por ahora */
+    z-index: 1;
+    opacity: 1;
 }
 
-/* Estilo para cada imagen */
 .entrada {
-    width: 80%; /* Ajustamos el ancho de la imagen */
-    height: auto; /* La altura se ajusta automáticamente */
-    margin: 20px auto; /* Centrado horizontal */
+    width: 40%;
+    height: auto;
+    margin: 40px auto;
     border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave alrededor de la imagen */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Cuando la imagen está activa */
 .image.show {
     opacity: 1;
-    transform: scale(1); /* Hace que las imágenes se "zoomen" al aparecer */
+    transform: scale(1);
 }
 
-/* Estilos para la cuenta atrás */
-.countdown {
-    text-align: center;
-    font-family: 'Arial', sans-serif;
-    color: #ff5733;
-    font-size: 50px;
-    font-weight: bold;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity 1s ease-out;
-    z-index: 1; /* Establecemos un z-index bajo para que no cubra elementos interactivos */
-  }
-  
-  /* Asegurarnos de que el input esté por encima de la cuenta atrás */
-  #answer-input {
+#answer-input {
     position: relative;
-    z-index: 10; /* Mayor z-index para asegurarse de que el input sea accesible */
-  }
-  
-
-/* Animación de desvanecimiento */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+    z-index: 10;
 }
 
-/* Media Queries para pantallas pequeñas y móviles */
+.intro-content > div {
+    /* El texto este en el centro y, como que no llegue a los extremos de la web, y tenga un tamaño de letra mayor*/
+    text-align: center;
+    max-width: 60%;
+    margin: 0 auto;
+    font-size: 1.5em;
 
-@media screen and (max-width: 1024px) {
-    body {
-        font-size: 28px; /* Reducción del tamaño de la fuente para pantallas medianas */
-    }
-
-    .images-container h2 {
-        font-size: 20px; /* Tamaño de texto más pequeño para pantallas medianas */
-    }
-
-    .image {
-        width: 50%; /* Hacer las imágenes más grandes en pantallas medianas */
-        height: auto; /* Dejar que la altura se ajuste proporcionalmente */
-    }
 }
 
-@media screen and (max-width: 768px) {
-    body {
-        font-size: 24px; /* Reducir más el tamaño de la fuente en pantallas más pequeñas */
-    }
 
-    .images-container h2 {
-        font-size: 18px; /* Tamaño de texto más pequeño */
-    }
-
-    .image {
-        width: 70%; /* Hacer las imágenes aún más grandes para pantallas más pequeñas */
-        height: auto;
-    }
-
-    /* Centrar y reducir márgenes para el input */
-    input {
-        font-size: 1em;
-        padding: 10px;
-        margin: 8px;
-    }
-
-    button {
-        font-size: 1em; /* Botones más pequeños en pantallas pequeñas */
-        padding: 8px 16px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    body {
-        font-size: 18px; /* Ajuste aún más pequeño para móviles pequeños */
-    }
-
-    .images-container h2 {
-        font-size: 16px; /* Reducir aún más el tamaño del texto */
-    }
-
-    .image {
-        width: 80%; /* Las imágenes ocupan más espacio en pantallas más pequeñas */
-        height: auto;
-    }
-
-    /* Reducir aún más márgenes y padding para inputs y botones */
-    input {
-        font-size: 0.9em;
-        padding: 8px;
-        margin: 5px;
-    }
-
-    button {
-        font-size: 0.9em;
-        padding: 6px 12px;
-    }
-}
-
-  
-  .intro-title {
-    font-size: 2.5rem;
-    margin-top: 20px;
-    animation: slideIn 1s ease-in-out forwards;
-  }
-  
-  .intro-text {
-    font-size: 1.2rem;
-    margin-top: 20px;
-    line-height: 1.6;
+.hidden {
     opacity: 0;
-    animation: typing 3s steps(60, end), fadeIn 3s;
-  }
+    transform: scale(0.9);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
 
-  
-  /* Animaciones */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes slideIn {
-    from {
-      transform: translateY(-100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-  
-
-
-  .hidden {
-    opacity: 0;
-    transform: scale(0.9); /* Reduce ligeramente el tamaño inicial */
-    transition: opacity 0.4s ease-out, transform 0.4s ease-out; /* Duración de 0.4s para la transición */
-  }
-  
-  .visible {
+.visible {
     opacity: 1;
-    transform: scale(1); /* Vuelve al tamaño original */
-  }
-  
-  
+    transform: scale(1);
+}
+
+/* Partículas */
+#particles-js {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Las partículas están al fondo */
+    pointer-events: none; /* Las partículas no interfieren con los clics */
+}

@@ -1,9 +1,6 @@
 // Respuestas Correctas
 const answers = ["A", "M", "E", "R", "I"];
-const backgrounds = [
-  "linear-gradient(135deg, rgba(34, 139, 34, 0.7) 25%, rgba(220, 20, 60, 0.7) 50%,rgba(255, 223, 186, 0.7) 75%",
-  "url('assets/fondo.jpg') no-repeat center center/cover"
-]
+
 let userAnswers = [];
 let currentQuestion = 0;
 const questions = [
@@ -16,26 +13,13 @@ const questions = [
 
 function startGame() {
   // Establecer transición de opacidad para el desvanecimiento inicial
-  document.body.style.transition = "opacity 1s ease";
+  document.body.style.transition = "opacity 1s ease-in-out";
   document.body.style.opacity = 0;
-
-  // Cambiar el fondo de la página al degradado y aplicar la transición de opacidad
-  setTimeout(() => {
-    document.body.style.background = backgrounds[0]; // Fondo degradado
-    document.body.style.opacity = 1; // Volver a mostrar el fondo con una transición suave
-
-    // Después de un segundo, cambiar el fondo a la imagen de fondo.jpg
-    setTimeout(() => {
-      document.body.style.transition = "background 2s ease"; // Transición suave de fondo
-      document.body.style.background = backgrounds[1]; // Fondo con imagen
-    }, 1000); // Esperar 1 segundo antes de cambiar a la imagen
-  }, 1000); // Primer desvanecimiento de opacidad (1 segundo)
-
   // Ocultar la pantalla de bienvenida y mostrar la pantalla de introducción
   document.getElementById("start-screen").classList.remove("active");
-  document.getElementById("intro-screen").style.display = "block";
+  document.getElementById("intro-screen").classList.add("active");
   typeIntroText();
-  playMusic();
+  playMusic("assets/navidad.mp3", 0, 1500);
 }
 
 
@@ -46,28 +30,23 @@ function typeIntroText() {
     Responderás preguntas cuidadosamente seleccionadas, cada una de ellas 
     revelando una letra que te llevará a la palabra secreta final.
 
-    Tu sabrás como debe utilziar las diferentes letras y de donde obtenerlas.
+    Tu sabrás como debe utilizar las diferentes letras y de donde obtenerlas.
     
     Resuelve cada enigma, y al final... ¡la sorpresa está asegurada! 🎁
     
     ¿Estás lista para demostrar tu ingenio?`;
 
+    document.body.style.opacity = 1;
+    //Mostrar el texto de introducción letra por letra
     let i = 0;
-    introText.classList.add('hidden');
-  
-    // Función para escribir texto con un retraso
-    function typeWriter() {
-      if (i < story.length) {
-        introText.textContent += story.charAt(i);
-        i++;
-        setTimeout(typeWriter, 50); // Cambiar el 50 por el tiempo que desees entre cada letra
-      } else {
-        introText.classList.remove('hidden');
-        introText.classList.add('visible');
+    const interval = setInterval(() => {
+      introText.textContent += story[i];
+      i++;
+      if (i >= story.length) {
+        clearInterval(interval);
       }
-    }
-  
-    typeWriter();
+    }, 30);    
+
 }
 
 
@@ -75,7 +54,6 @@ function startQuestions() {
   document.getElementById("intro-screen").style.display = "none";
   document.getElementById("question-screen").classList.add("active");
   loadQuestion();
-  //playMusic();
 }
 
 
@@ -85,7 +63,7 @@ function loadQuestion() {
   const questionText = document.getElementById('question-text');
   const input = document.getElementById('answer-input');
 
-  questionTitle.textContent = `Pregunta ${currentQuestion + 1}`;
+  questionTitle.textContent = `Pregunta nº ${currentQuestion + 1}`;
   questionText.textContent = questions[currentQuestion].question;
   input.value = '';
 }
@@ -115,69 +93,62 @@ function showFinalScreen() {
 function checkSecretWord() {
   const input = document.getElementById("secret-word").value.toUpperCase();
   if (input.toLowerCase() === "ameri") {
+    playMusic("assets/duki.mp3", 10000, 1500);
     // Ocultamos la pantalla de la palabra secreta
     document.getElementById("final-screen").classList.remove("active");
 
-    // Mostrar la cuenta atrás
-    const countdownElement = document.getElementById("countdown");
-    const countdownTimer = document.getElementById("countdown-timer");
-
-    countdownElement.style.opacity = "1";  // Mostrar la cuenta atrás
-    
-    let countdownValue = 10; // Iniciamos la cuenta atrás en 10 segundos
-    const countdownInterval = setInterval(() => {
-      countdownTimer.textContent = countdownValue;
-      countdownValue--;
-
-      if (countdownValue < 0) {
-        clearInterval(countdownInterval);
-        countdownElement.style.opacity = "0"; // Ocultamos la cuenta atrás después de que termine
-
-        // Mostrar las imágenes después de la cuenta atrás
-        const imagesContainer = document.createElement('div');
-        imagesContainer.classList.add('images-container');
-        imagesContainer.innerHTML = `
-          <h2>¡Correcto! Aquí llega tu regalo... 👀 </h2>
+    // Mostrar directamente las imágenes
+    const imagesContainer = document.createElement('div');
+    imagesContainer.classList.add('images-container');
+    imagesContainer.innerHTML = `
+      <h1 class="images-title">¡Correcto! Aquí llega tu regalo... 👀 </h1>
+        <div class="images">
           <div class="image" id="image1">
             <img class="entrada" src="assets/1.png" alt="Entrada 1">
           </div>
           <div class="image" id="image2">
             <img class="entrada" src="assets/2.png" alt="Entrada 2">
           </div>
-        `;
-        document.body.appendChild(imagesContainer);
+        </div>
+    `;
+    document.body.appendChild(imagesContainer);
 
-        // Asegurarnos de que las imágenes se añadan correctamente
-        const image1 = document.getElementById("image1");
-        const image2 = document.getElementById("image2");
+    // Asegurarnos de que las imágenes se añadan correctamente
+    const image1 = document.getElementById("image1");
+    const image2 = document.getElementById("image2");
 
-        setTimeout(() => {
-          image1.classList.add('show');
-          image2.classList.add('show');
-        }, 500); // Un poco de retraso para la animación
+    setTimeout(() => {
+      image1.classList.add('show');
+      image2.classList.add('show');
+    }, 500); // Un poco de retraso para la animación
 
-        launchConfetti(); // Lanza el confeti como celebración
-      }
-    }, 1000); // Actualiza cada segundo
+    launchConfetti(); // Lanza el confeti como celebración
   } else {
     alert("Palabra incorrecta. Revisa tus respuestas.");
   }
 }
 
+function playMusic(value, fadeOutDuration = 1500, fadeInDuration = 1500) {
+  // Detener la música actual con un fade out
+  const currentMusic = Howler._howls[0]; // Asumimos que solo hay una pista
+  if (currentMusic) {
+    currentMusic.fade(currentMusic.volume(), 0, fadeOutDuration); // Fade out de la música actual
+  }
 
+  // Esperar el fade out y luego reproducir la nueva música
+  setTimeout(() => {
+    const newMusic = new Howl({
+      src: [value],
+      autoplay: true,
+      loop: true,
+      volume: 0.6, // Comenzamos con volumen en 0
+    });
 
-
-
-// Música de Fondo
-function playMusic() {
-  const backgroundMusic = new Howl({
-    src: ['assets/navidad.mp3'],
-    autoplay: true,
-    loop: true,
-    volume: 0.4,
-  });
-  backgroundMusic.play();
+    newMusic.play();
+    newMusic.fade(0, 0.4, fadeInDuration); // Fade in para la nueva música
+  }, fadeOutDuration);
 }
+
 
 document.addEventListener("DOMContentLoaded", function() {
     // Configuración del efecto de nieve usando particles.js

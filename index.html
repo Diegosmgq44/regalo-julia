@@ -15,11 +15,6 @@
 <body>
     <div id="particles-js"></div>
 
-    <div id="countdown" class="countdown">
-      <h2>¡Tu regalo llegará en:</h2>
-      <p id="countdown-timer">10</p> <!-- Valor inicial de la cuenta atrás -->
-    </div>
-
   <!-- Pantalla de Inicio -->
   <div id="start-screen" class="screen active">
     <h1>¡Bienvenida!</h1>
@@ -29,16 +24,16 @@
 
   <div id="intro-screen" class="screen">
     <div class="intro-content">
-      <h1 class="intro-title">¡Bienvenido a la Aventura de las Letras!</h1>
-      <div id="intro-text" class="hidden intro-text"></div>
-      <button class="button" onclick="startQuestions()">¡Estoy listo!</button>
+      <h1 class="intro-title">¡Bienvenida a la Aventura de las Letras!</h1>
+      <div id="intro-text" class="intro-text"></div>
+      <button class="button" onclick="startQuestions()">¡Estoy lista!</button>
     </div>
   </div>
   
 
   <!-- Pantalla de Preguntas -->
   <div id="question-screen" class="screen">
-    <h2 id="question-title">Pregunta nº1</h2>
+    <h1 id="question-title">Pregunta nº1</h1>
     <p id="question-text">¿En que provincia se encuentran las ciudades Avilés y Pola de Lena?</p>
     <div class="input-group">
       <input type="text" id="answer-input" name="respuesta" placeholder="Escribe tu respuesta">
@@ -48,10 +43,10 @@
 
   <!-- Pantalla Final -->
   <div id="final-screen" class="screen">
-    <h2>¡Último paso!</h2>
+    <h1>¡Último paso!</h1>
     <p>Introduce la palabra secreta:</p>
     <input type="text" id="secret-word" placeholder="Palabra secreta...">
-    <button onclick="checkSecretWord()">Enviar</button>
+    <button onclick="checkSecretWord()">Comprobar palabra</button>
   </div>
 
   <!-- Sección de la cuenta atrás antes de mostrar las imágenes -->
