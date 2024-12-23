@@ -113,7 +113,7 @@ function checkSecretWord() {
       }
     }, 1000); // Cuenta regresiva cada 1 segundo
   } else {
-    showFailMessage(); // Muestra el mensaje de fallo
+    alert("Palabra incorrecta. Revisa tus respuestas.");
   }
 }
 
@@ -200,14 +200,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function launchConfetti() {
     confetti({
-      spread: 120,         // Aumenta la dispersión para que el confeti cubra más área
-      startVelocity: 65,    // Aumenta la velocidad de inicio para que el confeti salte más
-      elementCount: 100,    // Aumenta el número de piezas de confeti
-      decay: 0.94,         // Hace que el confeti se quede flotando más tiempo antes de caer
-      origin: { y: 0.9 },  // Mantiene el origen en la parte baja de la pantalla
-      colors: ['#ffcc00', '#ff6f00', '#ff4081', '#2196f3', '#4caf50'],  // Colores variados
-      shapes: ['square', 'circle'],  // Forma del confeti (puedes elegir entre cuadrado, círculo, etc.)
-      gravity: 0.7,         // Controla la gravedad para hacer que el confeti caiga más lento
+      particleCount: 200,
+      spread: 90,
+      origin: { y: 0.7 }
     });
-    
   }
