@@ -132,10 +132,13 @@ function checkSecretWord() {
 
 
 function playMusic(value, fadeOutDuration = 1500, fadeInDuration = 1500) {
-  // Detener la música actual con un fade out
-  const currentMusic = Howler._howls[0]; // Asumimos que solo hay una pista
+  // Detener la música actual con un fade out (si existe)
+  const currentMusic = Howler._howls[0]; 
   if (currentMusic) {
     currentMusic.fade(currentMusic.volume(), 0, fadeOutDuration); // Fade out de la música actual
+    setTimeout(() => {
+      currentMusic.stop(); // Detenemos completamente la música actual
+    }, fadeOutDuration); // Esperamos que el fade out termine
   }
 
   // Esperar el fade out y luego reproducir la nueva música
@@ -151,6 +154,7 @@ function playMusic(value, fadeOutDuration = 1500, fadeInDuration = 1500) {
     newMusic.fade(0, 0.4, fadeInDuration); // Fade in para la nueva música
   }, fadeOutDuration);
 }
+
 
 
 document.addEventListener("DOMContentLoaded", function() {
