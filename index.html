@@ -37,9 +37,6 @@
           Debes descubrir la palabra secreta que te permitirá acceder al regalo de Navidad.
         </p>
         <p>
-          Si consigues contestar a todo correctamente...
-        </p>
-        <p>
           🎄 ¿Estás lista para encontrar tu regalo de Navidad? 🎄
         </p>
       </div>
@@ -62,12 +59,20 @@
   <div id="final-screen" class="screen">
     <h1>¡Último paso!</h1>
     <p>Ahora ya conoces la respuesta a las 5 preguntas...</p>
+    <p id="answers">
+      <span class="highlight">A</span>sturias /
+      <span class="highlight">M</span>adrid /
+      <span class="highlight">E</span>uskera / 
+      <span class="highlight">R</span>egla /
+       <span class="highlight">I</span>glesia 
+    </p>
     <p>¡Solo te queda descubrir la palabra secreta!</p>
-    <p>Una pista...</p>
-    <p>Hay veces que una primera letra puede ser la solución</p>
+    <p>"Un lugar al cual sueño llevarte un día..."</p>
+    
     <input type="text" id="secret-word" placeholder="Palabra secreta...">
     <button onclick="checkSecretWord()">Comprobar palabra</button>
   </div>
+
 
   <!-- Sección de la cuenta atrás antes de mostrar las imágenes -->
   <div id="countdown-screen" class="screen">

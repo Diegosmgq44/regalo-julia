@@ -1,14 +1,12 @@
 body {
     font-family: 'Roboto', sans-serif;
     color: #ffffff;
-    background: url('assets/fondo.jpg') no-repeat center center;
-    background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
-    background-position: center center; /* Centra la imagen */
-    background-attachment: fixed; /* Mantiene la imagen fija al hacer scroll */
-    height: 100%; /* Asegura que el body ocupe el 100% de la altura de la pantalla */
-    min-height: 100vh; /* Garantiza que al menos ocupe toda la altura de la ventana */
-    margin: 0; /* Elimina márgenes del body */
-    overflow: hidden; /* Evita que haya scroll horizontal */
+    background: url('assets/fondo4.jpeg') no-repeat center center;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8); 
+    background-size: cover; 
+    min-height: 100vh; 
+    margin: 0; 
+    overflow: hidden; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,7 +19,6 @@ h1 {
 p {
     font-size: 1.5em;
 }
-
 
 .screen {
     display: none;
@@ -58,20 +55,20 @@ input {
     padding: 12px 20px;
     font-size: 1.2em;
     border-radius: 25px;
-    border: 2px solid #ffffff; /* Borde blanco para que resalte */
-    background-color: rgba(255, 255, 255, 0.7); /* Fondo suave */
-    color: #333333; /* Color del texto para que sea legible */
+    border: 2px solid #ffffff; 
+    background-color: rgba(255, 255, 255, 0.7); 
+    color: #333333; 
     margin: 15px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
     transition: all 0.3s ease;
 }
 
 input:focus {
-    border-color: rgb(158, 0, 0); /* Borde rojo oscuro */
-    background-color: rgba(255, 255, 255, 0.9); /* Fondo más claro al hacer foco */
-    box-shadow: 0 0 8px rgba(158, 0, 0, 0.7); /* Sombra roja cuando está enfocado */
-    outline: none; /* Eliminar el contorno predeterminado */
+    border-color: rgb(158, 0, 0); 
+    background-color: rgba(255, 255, 255, 0.9); 
+    box-shadow: 0 0 8px rgba(158, 0, 0, 0.7); 
+    outline: none;
 }
 
 .input-group {
@@ -102,25 +99,24 @@ input:focus {
     margin: 40px auto;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    animation: pump 1.5s infinite;  /* Aplicar la animación */
+    animation: pump 1.5s infinite; 
 }
 
-/* Animación de bombeo */
 @keyframes pump {
     0% {
-        transform: scale(1);  /* Tamaño original */
+        transform: scale(1); 
     }
     30% {
-        transform: scale(1.02);  /* Aumento de tamaño */
+        transform: scale(1.02);  
     }
     50% {
-        transform: scale(1);  /* Vuelve al tamaño original */
+        transform: scale(1); 
     }
     70% {
-        transform: scale(1.02);  /* Aumento de tamaño */
+        transform: scale(1.02); 
     }
     100% {
-        transform: scale(1);  /* Tamaño original */
+        transform: scale(1);
     }
 }
 
@@ -130,7 +126,7 @@ input:focus {
     animation: fadeIn 2s ease-out forwards;
   }
 
-  @keyframes fadeIn {
+@keyframes fadeIn {
     0% {
         opacity: 0;
         transform: translateY(20px) scale(0.95);
@@ -145,17 +141,16 @@ input:focus {
     }
 }
 
-  #countdown-screen #countdown {
+#countdown-screen #countdown {
     font-size: 12em;
     font-weight: bold;
-    color: #FF5C8D;  /* Color llamativo para el número de la cuenta atrás */
+    color: #FF5C8D; 
     margin-top: 20px;
     text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.7);
     animation: countdown-animation 1s ease-in-out infinite;
-  }
+}
   
-  /* Animación de la cuenta atrás */
-  @keyframes countdown-animation {
+@keyframes countdown-animation {
     0% {
       transform: scale(1);
     }
@@ -165,7 +160,7 @@ input:focus {
     100% {
       transform: scale(1);
     }
-  }
+}
 
 .image.show {
     opacity: 1;
@@ -183,6 +178,9 @@ input:focus {
     margin: 0 auto;
 }
 
+.highlight {
+    font-size: 1.2em;
+}
 
 .hidden {
     opacity: 0;
@@ -196,34 +194,32 @@ input:focus {
     transition: opacity 2s linear;
 }
 
-/* Partículas */
 #particles-js {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1; /* Las partículas están al fondo */
-    pointer-events: none; /* Las partículas no interfieren con los clics */
+    z-index: 1; 
+    pointer-events: none; 
 }
 
 .message-container {
     display: flex;
     justify-content: center;
     position: fixed;
-    top: 0; /* Asegura que esté en la parte superior */
+    top: 0;
     left: 50%;
-    transform: translateX(-50%); /* Centrado exacto horizontal */
+    transform: translateX(-50%); 
     width: 100%;
     z-index: 1000;
   }
   
-/* Estilo general del mensaje */
 .message-fail {
-    display: none; /* Oculto por defecto */
-    background-color: #ff4c4c; /* Fondo rojo brillante */
+    display: none; 
+    background-color: #ff4c4c; 
     margin-top: 100px;
-    color: white; /* Texto blanco */
+    color: white; 
     padding: 15px 30px;
     border-radius: 10px;
     font-size: 18px;
@@ -231,24 +227,22 @@ input:focus {
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     opacity: 0;
-    transform: translateY(-20px); /* Desplazado hacia arriba */
-    transition: opacity 0.5s, transform 0.5s; /* Transiciones suaves */
+    transform: translateY(-20px);
+    transition: opacity 0.5s, transform 0.5s;
   }
   
-/* Animación y activación del mensaje */
 .message-fail.active {
     display: block;
     opacity: 1;
-    transform: scale(1) translateY(-10px); /* Efecto de rebote */
+    transform: scale(1) translateY(-10px); 
     bottom: 40px;
-  }
+}
   
-  /* Efecto divertido con rebote */
-  .message-fail.active {
+.message-fail.active {
     animation: bounce 0.5s ease-out;
-  }
+}
   
-  @keyframes bounce {
+@keyframes bounce {
     0% {
       transform: scale(0.8) translateY(10px);
     }
@@ -258,10 +252,8 @@ input:focus {
     100% {
       transform: scale(1) translateY(0);
     }
-  }
+}
 
-
-  /** Si el tamaño es pequeño, se permite el scroll **/
 @media (max-width: 768px) {
     body {
         overflow: auto;

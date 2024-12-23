@@ -80,7 +80,7 @@ function showFinalScreen() {
 function checkSecretWord() {
   const input = document.getElementById("secret-word").value.toUpperCase();
   if (input.toLowerCase() === "ameri") {
-    playMusic("assets/duki.mp3", 10000, 1500);
+    playMusic("assets/duki.mp3", 8000, 1500);
     // Ocultamos la pantalla de la palabra secreta
     document.getElementById("final-screen").classList.remove("active");
     // Mostramos la cuenta atrás
