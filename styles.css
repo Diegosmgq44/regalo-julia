@@ -43,8 +43,8 @@ button {
     font-size: 2em;
     cursor: pointer;
     margin: 10px;
-    margin-top: 60px;
-    margin-bottom: 60px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 button:hover {
@@ -58,7 +58,7 @@ input {
     border: 2px solid #ffffff; 
     background-color: rgba(255, 255, 255, 0.7); 
     color: #333333; 
-    margin: 15px;
+    margin: 10px;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
     transition: all 0.3s ease;
@@ -88,7 +88,7 @@ input:focus {
 
 #images-container {
     text-align: center;
-    margin-top: 50px;
+    margin-top: 20px;
     z-index: 1;
     opacity: 1;
 }
@@ -181,6 +181,22 @@ input:focus {
 .highlight {
     font-size: 1.5em;
 }
+
+#hint-text {
+    font-size: 1.8em;
+    font-style: italic;
+    margin-top: 20px;
+    text-align: center;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  
+  #hint-text.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
 
 .hidden {
     opacity: 0;

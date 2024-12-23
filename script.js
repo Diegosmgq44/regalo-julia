@@ -4,11 +4,11 @@ const answers = ["A", "M", "E", "R", "I"];
 let userAnswers = [];
 let currentQuestion = 0;
 const questions = [
-  { letter: 'A', question: '¿En que provincia se encuentran Pola de Lena y Avilés?', answer: 'a' },
-  { letter: 'M', question: '¿Cúal es la capital de España?', answer: 'a' },
-  { letter: 'E', question: '¿En que idioma hablan los habitantes de nuestro último viaje?', answer: 'a' },
-  { letter: 'R', question: 'Nombre de su grupo.', answer: 'a' },
-  { letter: 'I', question: '¿Qué monumento histórico es Santa Cristina de Lena?', answer: 'a' },
+  { letter: 'A', question: '¿En que provincia se encuentran Pola de Lena y Avilés?', answer: 'Asturias' },
+  { letter: 'M', question: '¿Cúal es la capital de España?', answer: 'Madrid' },
+  { letter: 'E', question: '¿En que idioma hablan los habitantes de nuestro último viaje?', answer: 'Euskera' },
+  { letter: 'R', question: 'Cerca de Murias, llegando a una cascada, hicimos una preciosa...', answer: 'Ruta' },
+  { letter: 'I', question: '¿Qué monumento histórico es Santa Cristina de Lena?', answer: 'Iglesia' },
 ];
 
 function startGame() {
@@ -76,6 +76,19 @@ function showFinalScreen() {
   document.getElementById("question-screen").classList.remove("active");
   document.getElementById("final-screen").classList.add("active");
 }
+
+function showHint() {
+  const hintText = document.getElementById("hint-text");
+  hintText.classList.add("visible");
+  hintText.classList.remove("hidden");
+
+  // Opcional: Desactivar el botón después de mostrar la pista
+  const hintButton = document.getElementById("hint-button");
+  hintButton.disabled = true;
+  hintButton.style.opacity = 0.5; // Cambiar la apariencia para indicar que está desactivado
+  hintButton.style.cursor = "not-allowed";
+}
+
 
 function checkSecretWord() {
   const input = document.getElementById("secret-word").value.toUpperCase();
