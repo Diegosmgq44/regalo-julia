@@ -144,7 +144,7 @@ function playMusic(value, fadeOutDuration = 1500, fadeInDuration = 1500) {
       src: [value],
       autoplay: true,
       loop: true,
-      volume: 0.1, // Comenzamos con volumen en 0
+      volume: 0.05, // Comenzamos con volumen en 0
     });
 
     newMusic.play();
