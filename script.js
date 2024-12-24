@@ -112,7 +112,7 @@ function showHint() {
   hintButton.style.cursor = "not-allowed";
 }
 
-let tiempoReproduceVideo = 10;
+let tiempoReproduceVideo = 8;
 function checkSecretWord() {
   const input = document.getElementById("secret-word").value.toUpperCase();
   if (input.toLowerCase() === "ameri") {
