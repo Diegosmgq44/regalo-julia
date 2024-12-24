@@ -112,6 +112,12 @@ function showHint() {
   hintButton.style.cursor = "not-allowed";
 }
 
+window.addEventListener('DOMContentLoaded', () => {
+  const backgroundVideo = document.getElementById('background-video');
+  backgroundVideo.pause(); // Pausamos el video
+  backgroundVideo.currentTime = 0; // Reiniciamos al inicio
+});
+
 let tiempoReproduceVideo = 8;
 function checkSecretWord() {
   const input = document.getElementById("secret-word").value.toUpperCase();
