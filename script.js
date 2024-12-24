@@ -42,34 +42,57 @@ function loadQuestion() {
   input.value = '';
 }
 
+let isProcessing = false; // Variable de control para evitar clics repetidos
+
 function submitAnswer() {
+  // Si ya estamos procesando, no hacemos nada
+  if (isProcessing) return;
+
   const input = document.getElementById('answer-input');
   const answer = input.value.trim().toLowerCase();
+  const button = document.querySelector('button'); // Obtener el botón de responder
+
+  // Deshabilitar el botón para evitar múltiples clics
+  button.disabled = true;
+  isProcessing = true; // Marcamos que estamos procesando
 
   if (answer.toLowerCase() === questions[currentQuestion].answer.toLowerCase()) {
+    showFeedback('correct'); // Mostrar el feedback de "Correcto"
     currentQuestion++;
-    if (currentQuestion < questions.length) {
-      loadQuestion();
-    } else {
-      showFinalScreen();
-    }
+    setTimeout(() => {
+      if (currentQuestion < questions.length) {
+        loadQuestion();
+      } else {
+        showFinalScreen();
+      }
+      // Habilitar el botón después de un retraso y desbloquear la capacidad de responder
+      button.disabled = false;
+      isProcessing = false;
+    }, 2000); // Espera antes de avanzar
   } else {
-    showFailMessage();  // Muestra el mensaje de fallo
+    showFeedback('incorrect'); // Mostrar el feedback de "Incorrecto"
+    setTimeout(() => {
+      // Habilitar el botón después de un retraso y desbloquear la capacidad de responder
+      button.disabled = false;
+      isProcessing = false;
+    }, 2000); // Espera antes de habilitar el botón nuevamente
   }
 }
 
-// Mostrar Mensaje de Fallo (cuando falla una respuesta)
-function showFailMessage() {
-  const failMessage = document.getElementById("fail-message");
-  failMessage.classList.add("active");
-  failMessage.style.display = "flex";
-
-  setTimeout(() => {
-    failMessage.classList.remove("active");
-    failMessage.style.display = "none";
-  }, 2000); // Desaparece después de 2 segundos
+// Mostrar Feedback
+function showFeedback(type) {
+  const feedback = document.querySelector('.feedback');
   
+  // Configurar texto y clase según tipo
+  feedback.textContent = type === 'correct' ? '¡Correcto!' : '¡Incorrecto!';
+  feedback.className = `feedback ${type} show`;
+  
+  // Mostrar y ocultar después de 2 segundos
+  setTimeout(() => {
+    feedback.classList.remove('show');
+  }, 2000);
 }
+
 
 // Mostrar Pantalla Final
 function showFinalScreen() {
@@ -147,7 +170,7 @@ function playMusic(value, fadeOutDuration = 1500, fadeInDuration = 1500) {
       src: [value],
       autoplay: true,
       loop: true,
-      volume: 0.1, // Comenzamos con volumen en 0
+      volume: 0.01, // Comenzamos con volumen en 0
     });
 
     newMusic.play();

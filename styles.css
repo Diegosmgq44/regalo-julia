@@ -255,6 +255,67 @@ input:focus {
 .message-fail.active {
     animation: bounce 0.5s ease-out;
 }
+
+.feedback {
+    position: absolute;
+    top: 80px; /* Ajusta según sea necesario */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 26px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 12px;
+    text-align: center;
+    color: white;
+    background: linear-gradient(90deg, #4caf50, #81c784); /* Verde para correcto */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    opacity: 0;
+    z-index: 10;
+    transition: all 0.5s ease, opacity 0.3s ease-in-out;
+  }
+  
+  .feedback.correct {
+    background: linear-gradient(90deg, #4caf50, #81c784); /* Verde gradiente */
+  }
+  
+  .feedback.incorrect {
+    background: linear-gradient(90deg, #f44336, #e57373); /* Rojo gradiente */
+  }
+  
+  .feedback.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-10px); /* Pequeña animación hacia arriba */
+  }
+  
+  
+  
+  
+  .screen.correct {
+    animation: correct-bg 1s ease;
+  }
+  
+  .screen.incorrect {
+    animation: incorrect-bg 1s ease;
+  }
+  
+  @keyframes correct-bg {
+    0% {
+      background-color: #4CAF50;
+    }
+    100% {
+      background-color: transparent;
+    }
+  }
+  
+  @keyframes incorrect-bg {
+    0% {
+      background-color: #F44336;
+    }
+    100% {
+      background-color: transparent;
+    }
+  }
+  
   
 @keyframes bounce {
     0% {
