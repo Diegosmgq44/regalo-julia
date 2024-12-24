@@ -4,11 +4,11 @@ const answers = ["A", "M", "E", "R", "I"];
 let userAnswers = [];
 let currentQuestion = 0;
 const questions = [
-  { letter: 'A', question: '¿En que provincia se encuentran Pola de Lena y Avilés?', answer: 'Asturias' },
-  { letter: 'M', question: '¿Cúal es la capital de España?', answer: 'Madrid' },
-  { letter: 'E', question: '¿En que idioma hablan los habitantes de nuestro último viaje?', answer: 'Euskera' },
-  { letter: 'R', question: 'Cerca de Murias, llegando a una cascada, hicimos una preciosa...', answer: 'Ruta' },
-  { letter: 'I', question: '¿Qué monumento histórico es Santa Cristina de Lena?', answer: 'Iglesia' },
+  { letter: 'A', question: '¿En que provincia se encuentran Pola de Lena y Avilés?', answer: '' },
+  { letter: 'M', question: '¿Cúal es la capital de España?', answer: '' },
+  { letter: 'E', question: '¿En que idioma hablan los habitantes de nuestro último viaje?', answer: '' },
+  { letter: 'R', question: 'Cerca de Murias, llegando a una cascada, hicimos una preciosa...', answer: '' },
+  { letter: 'I', question: '¿Qué monumento histórico es Santa Cristina de Lena?', answer: '' },
 ];
 
 function startGame() {
@@ -112,26 +112,41 @@ function showHint() {
   hintButton.style.cursor = "not-allowed";
 }
 
-
+let tiempoReproduceVideo = 10;
 function checkSecretWord() {
   const input = document.getElementById("secret-word").value.toUpperCase();
   if (input.toLowerCase() === "ameri") {
-    playMusic("assets/duki.mp3", 9000, 1500);
-    // Ocultamos la pantalla de la palabra secreta
+    playMusic("assets/false.mp3", 9000, 1500);
     document.getElementById("final-screen").classList.remove("active");
-    // Mostramos la cuenta atrás
     document.getElementById("countdown-screen").classList.add("active");
 
     let countdown = 10;
     const countdownElement = document.getElementById("countdown");
+    const backgroundVideo = document.getElementById("background-video");
+
+    // Pausamos el video al inicio
+    backgroundVideo.pause();
+    backgroundVideo.currentTime = 0; // Reinicia el video al comienzo
 
     // Función de cuenta atrás
     const countdownInterval = setInterval(() => {
       countdownElement.textContent = countdown;
+
+      // Cuando falten 5 segundos, reproducimos el video y comenzamos a mostrarlo
+      if (countdown === tiempoReproduceVideo) {
+        backgroundVideo.play(); // Inicia la reproducción
+      }
+
+      if (countdown <= tiempoReproduceVideo) {
+        const opacity = (tiempoReproduceVideo - countdown) / tiempoReproduceVideo; // Incrementa de 0 a 1 en 5 pasos
+        backgroundVideo.style.opacity = opacity.toString();
+      }
+
       countdown--;
 
       if (countdown < 0) {
         clearInterval(countdownInterval);
+
         // Ocultamos la cuenta atrás y mostramos el "duki-screen"
         document.getElementById("countdown-screen").classList.remove("active");
         document.getElementById("duki-screen").classList.add("active");
@@ -152,6 +167,9 @@ function checkSecretWord() {
     showFailMessage(); // Muestra el mensaje de fallo
   }
 }
+
+
+
 
 let lastVolume = 0.05; // Guarda el último volumen usado
 

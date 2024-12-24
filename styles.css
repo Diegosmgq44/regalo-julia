@@ -118,6 +118,32 @@ input:focus {
     }
 }
 
+#background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+  }
+  
+  #background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw; /* Se asegura de cubrir el ancho completo de la ventana */
+    height: 100vh; /* Se asegura de cubrir la altura completa de la ventana */
+    transform: translate(-50%, -50%);
+    object-fit: cover; /* Escala el video para cubrir completamente el área */
+    object-position: center; /* Centra el video */
+    opacity: 0; /* Comienza completamente invisible */
+    transition: opacity 1s ease-in-out; /* Suaviza los cambios de opacidad */
+    z-index: -1;
+  }
+  
+  
+
 .screen {
     display: none;
     opacity: 0;
