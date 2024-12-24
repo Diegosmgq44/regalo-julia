@@ -153,7 +153,7 @@ function checkSecretWord() {
   }
 }
 
-let lastVolume = 0.01; // Guarda el último volumen usado
+let lastVolume = 0.05; // Guarda el último volumen usado
 
 function playMusic(value, fadeOutDuration = 1500, fadeInDuration = 1500) {
   // Detener la música actual con un fade out (si existe)
