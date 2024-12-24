@@ -4,11 +4,11 @@ const answers = ["A", "M", "E", "R", "I"];
 let userAnswers = [];
 let currentQuestion = 0;
 const questions = [
-  { letter: 'A', question: '¿En que provincia se encuentran Pola de Lena y Avilés?', answer: '' },
-  { letter: 'M', question: '¿Cúal es la capital de España?', answer: '' },
-  { letter: 'E', question: '¿En que idioma hablan los habitantes de nuestro último viaje?', answer: '' },
-  { letter: 'R', question: 'Cerca de Murias, llegando a una cascada, hicimos una preciosa...', answer: '' },
-  { letter: 'I', question: '¿Qué monumento histórico es Santa Cristina de Lena?', answer: '' },
+  { letter: 'A', question: '¿En que provincia se encuentran Pola de Lena y Avilés?', answer: 'Asturias' },
+  { letter: 'M', question: '¿Cúal es la capital de España?', answer: 'Madrid' },
+  { letter: 'E', question: '¿En que idioma hablan los habitantes de nuestro último viaje?', answer: 'Euskera' },
+  { letter: 'R', question: 'Cerca de Murias, llegando a una cascada, hicimos una preciosa...', answer: 'Ruta' },
+  { letter: 'I', question: '¿Qué monumento histórico es Santa Cristina de Lena?', answer: 'Iglesia' },
 ];
 
 function startGame() {
