@@ -153,11 +153,13 @@ function checkSecretWord() {
   }
 }
 
+let lastVolume = 0.01; // Guarda el último volumen usado
 
 function playMusic(value, fadeOutDuration = 1500, fadeInDuration = 1500) {
   // Detener la música actual con un fade out (si existe)
   const currentMusic = Howler._howls[0]; 
   if (currentMusic) {
+    lastVolume = currentMusic.volume(); // Guardamos el volumen actual
     currentMusic.fade(currentMusic.volume(), 0, fadeOutDuration); // Fade out de la música actual
     setTimeout(() => {
       currentMusic.stop(); // Detenemos completamente la música actual
@@ -170,13 +172,14 @@ function playMusic(value, fadeOutDuration = 1500, fadeInDuration = 1500) {
       src: [value],
       autoplay: true,
       loop: true,
-      volume: 0.01, // Comenzamos con volumen en 0
+      volume: lastVolume, // Comenzamos con el volumen anterior
     });
 
     newMusic.play();
-    newMusic.fade(0, 0.4, fadeInDuration); // Fade in para la nueva música
+    newMusic.fade(0, lastVolume, fadeInDuration); // Fade in para la nueva música con el volumen guardado
   }, fadeOutDuration);
 }
+
 
 
 
