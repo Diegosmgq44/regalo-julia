@@ -9,3 +9,7 @@ El proyecto está desplegado mediante Github Pages, está asociado a un dominio.
 **Enlace para la Despliegue**
 
 [www.regaloparajulia.org](https://regaloparajulia.org)
+
+Pd: Las rspuestas a las 5 primeras preguntas son Asturias / Madrid / Euskera / Ruta / Iglesia
+
+La palabra final es "Ameri"
